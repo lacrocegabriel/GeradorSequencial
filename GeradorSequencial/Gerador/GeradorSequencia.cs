@@ -8,7 +8,7 @@ namespace GeradorSequencial.Gerador
 {
     public class GeradorSequencia
     {
-        public int Numero { get; set; }
+        public int Numero { get; private set; }
         public List<int> Sequencia {  get; private set; }
         protected int ValidaInsercao { get; set; }
 
