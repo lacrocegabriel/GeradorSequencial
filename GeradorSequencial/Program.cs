@@ -1,39 +1,27 @@
-﻿var random = new Random();
-var list = new List<int>();
-int NumeroGerado = 0;
-int quantidade;
-int j = 0;
+﻿using GeradorSequencial.Gerador;
 
-
-Console.WriteLine("Digite a sequencia de números que irá utilizar");
-quantidade = int.Parse(Console.ReadLine());
-
-for (int i = 0; i < quantidade; i++)
+namespace GeradorSequencial
 {
-    j = 0;
-    NumeroGerado = random.Next(1, 60);
-    
-    while (j == 0)
+    class Program
     {
-        if (list.Contains(NumeroGerado))
+        public static void Main(string[] args)
         {
-            NumeroGerado = random.Next(1, 60);
-            j = 0;
-        }
-        else
-        {
-            j = 1;
+            Console.WriteLine("Digite a sequencia de números que irá utilizar");
+            int numero = int.Parse(Console.ReadLine());
+
+            GeradorSequencia quantidadeSequencia = new GeradorSequencia(numero);
+            quantidadeSequencia.GeraSequencial(numero);
+
+            foreach (int i in quantidadeSequencia.Sequencia)
+            {
+                Console.Write(i + "  ");
+            }
+
         }
     }
-    list.Add(NumeroGerado);
 
 }
 
-
-foreach (int n in list)
-{
-    Console.Write(n.ToString()," - ");
-}
 
 
 
