@@ -16,10 +16,8 @@ namespace GeradorSequencial
             {
                 Console.Write(i + "  ");
             }
-
         }
     }
-
 }
 
 

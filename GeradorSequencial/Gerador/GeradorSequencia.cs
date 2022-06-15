@@ -18,12 +18,12 @@ namespace GeradorSequencial.Gerador
             Sequencia = new List<int>();
         }
 
-        public void GeraSequencial(int numero) 
+        public void GeraSequencial(int numero)
         {
             for (int i = 0; i < numero; i++)
             {
                 ValidaInsercao = 0;
-                int NumeroGerado = new Random().Next(1,60);
+                int NumeroGerado = new Random().Next(1, 60);
 
                 while (ValidaInsercao == 0)
                 {
@@ -38,10 +38,7 @@ namespace GeradorSequencial.Gerador
                     }
                 }
                 Sequencia.Add(NumeroGerado);
-               
             }
-
         }
-
     }
 }
