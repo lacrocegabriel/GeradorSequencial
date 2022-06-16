@@ -18,21 +18,21 @@ namespace GeradorSequencial.Gerador.Services
         {
             for (int i = 0; i < parametro.QuantidadeNumeros; i++)
             {
-                int n1 = 10;
+
                 var numero = _geradorSequencia.GeraNumero(parametro);
                 
                 while (sequencia.Validar(numero) == false)
                 {
                     numero = _geradorSequencia.GeraNumero(parametro);
                 }
-                numero = n1;
+
                 if (sequencia.Validar(numero) == true)
                 {
                     _sequencia.AdicionaSequencia(numero);
                 }
                 else
                 {
-                    Console.WriteLine("Ocorreu um problema na listagem, tente novamente!");
+                    Console.WriteLine("Programa interrompido! Ocorreu um problema na listagem, por favor tente novamente!");
                     break;
                 }
             }
