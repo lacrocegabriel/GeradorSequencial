@@ -20,5 +20,11 @@
                 return true;
             }
         }
-    }
+        public string RetornaSequencia()
+        {
+            var sequencia = string.Join(" - ", SequenciaNumerica);
+            return sequencia.ToString();
+        }
+
+    } 
 }
