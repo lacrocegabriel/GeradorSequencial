@@ -1,4 +1,6 @@
 ﻿using GeradorSequencial.Gerador;
+using GeradorSequencial.Gerador.Services;
+using GeradorSequencial.Gerador.Repository;
 
 namespace GeradorSequencial
 {
@@ -6,16 +8,26 @@ namespace GeradorSequencial
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Digite a sequencia de números que irá utilizar");
-            int numero = int.Parse(Console.ReadLine());
+            Console.Write("Digite quantos números irá gerar: ");
+            var quantidadeNumeros =  int.Parse(Console.ReadLine());
+            Console.Write("Digite o numero inicial da geração: ");
+            var numeroInicial = int.Parse(Console.ReadLine());
+            Console.Write("Digite o numero final da geração: ");
+            var numeroFinal = int.Parse(Console.ReadLine());
 
-            GeradorSequencia quantidadeSequencia = new GeradorSequencia(numero);
-            quantidadeSequencia.GeraSequencial(numero);
+            var parametro = new ParametroGeracao(quantidadeNumeros, numeroInicial, numeroFinal);
+            var sequencia = new Sequencia(new List<int>());
+            var geraRepo = new SequencialRepository(sequencia);
+            var geraNum = new GeradorSequencialService();
+            var geraServ = new SequencialService(geraRepo, geraNum);
 
-            foreach (int i in quantidadeSequencia.Sequencia)
+            geraServ.AdicionaSequencia(parametro,sequencia);
+
+            foreach (int i in sequencia.SequenciaNumerica)
             {
                 Console.Write(i + "  ");
             }
+
         }
     }
 }
