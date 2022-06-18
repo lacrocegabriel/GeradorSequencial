@@ -2,6 +2,6 @@
 {
     public interface IGeradorSequencialService
     {
-        int GeraNumero(ParametroGeracao parametro);
+        public int GeraNumero(ParametroGeracao parametro);
     }
 }

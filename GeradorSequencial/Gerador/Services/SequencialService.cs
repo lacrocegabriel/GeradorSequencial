@@ -4,14 +4,14 @@ namespace GeradorSequencial.Gerador.Services
 {
     public class SequencialService : ISequencialService
     {
-        protected readonly ISequencialRepository _sequencia;
+        protected readonly ISequencialRepository _sequenciaRepository;
         protected readonly IGeradorSequencialService _geradorSequencia;
 
         public SequencialService(
-            ISequencialRepository sequencia,
+            ISequencialRepository sequenciaRepository,
             IGeradorSequencialService geradorSequencia)
         {
-            _sequencia = sequencia;
+            _sequenciaRepository = sequenciaRepository;
             _geradorSequencia = geradorSequencia;
         }
         public void AdicionaSequencia(ParametroGeracao parametro,Sequencia sequencia)
@@ -25,17 +25,13 @@ namespace GeradorSequencial.Gerador.Services
                 {
                     numero = _geradorSequencia.GeraNumero(parametro);
                 }
-
-                if (sequencia.Validar(numero) == true)
-                {
-                    _sequencia.AdicionaSequencia(numero);
-                }
-                else
-                {
-                    Console.WriteLine("Programa interrompido! Ocorreu um problema na listagem, por favor tente novamente!");
-                    break;
-                }
+                
+                _sequenciaRepository.AdicionaSequencia(sequencia,numero);
             }
+        }
+        public string RetornaSequencia(Sequencia sequencia)
+        {
+            return _sequenciaRepository.BuscaSequencia(sequencia);            
         }
     }
 }

@@ -5,16 +5,15 @@ namespace GeradorSequencial.Gerador.Repository
     public class SequencialRepository : ISequencialRepository
 
     {
-        public Sequencia Entity { get; set; }
-
-        public SequencialRepository(Sequencia entity)
+        public string BuscaSequencia(Sequencia sequencia)
         {
-            Entity = entity;
+            var resultado = string.Join(" - ", sequencia.SequenciaNumerica);
+            return resultado.ToString();
         }
-        public void AdicionaSequencia(int numero)
-        {
-            Entity.SequenciaNumerica.Add(numero);
 
+        public void AdicionaSequencia(Sequencia seq, int numero)
+        {
+            seq.SequenciaNumerica.Add(numero);
         }
     }
 }

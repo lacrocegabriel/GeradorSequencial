@@ -4,6 +4,7 @@ namespace GeradorSequencial.Gerador.Interfaces
 {
     public interface ISequencialRepository
     {
-        void AdicionaSequencia(int sequencia);
+        string BuscaSequencia(Sequencia sequencia);
+        void AdicionaSequencia(Sequencia sequencia,int numero);
     }
 }
