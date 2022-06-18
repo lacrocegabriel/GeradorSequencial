@@ -11,9 +11,9 @@ namespace GeradorSequencial.Gerador.Repository
             return resultado.ToString();
         }
 
-        public void AdicionaSequencia(Sequencia seq, int numero)
+        public void AdicionaSequencia(Sequencia sequencia, int numero)
         {
-            seq.SequenciaNumerica.Add(numero);
+            sequencia.SequenciaNumerica.Add(numero);
         }
     }
 }
