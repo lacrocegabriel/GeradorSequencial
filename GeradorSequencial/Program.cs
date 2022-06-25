@@ -18,19 +18,36 @@ namespace GeradorSequencial
 
             var list = new Sequencia(new List<int>());
 
-            Console.Write("Digite quantos números irá gerar: ");
-            var quantidadeNumeros = int.Parse(Console.ReadLine());
-            Console.Write("Digite o numero inicial da geração: ");
-            var numeroInicial = int.Parse(Console.ReadLine());
-            Console.Write("Digite o numero final da geração: ");
-            
-            var numeroFinal = int.Parse(Console.ReadLine());
+            string encerra = "n";
 
-            var parametro = new ParametroGeracao(quantidadeNumeros, numeroInicial, numeroFinal);
+            while (encerra != "s")
+            {
+                Console.Clear();
+                Console.Write("Quantas sequencias deseja gerar? ");
+                int sequencias = int.Parse(Console.ReadLine());
 
-            sequencialService.AdicionaSequencia(parametro, list);
 
-            Console.WriteLine(sequencialService.RetornaSequencia(list));
+                Console.Write("Digite quantos números irá gerar: ");
+                var quantidadeNumeros = int.Parse(Console.ReadLine());
+                Console.Write("Digite o numero inicial da geração: ");
+                var numeroInicial = int.Parse(Console.ReadLine());
+                Console.Write("Digite o numero final da geração: ");
+
+                var numeroFinal = int.Parse(Console.ReadLine());
+
+                var parametro = new ParametroGeracao(quantidadeNumeros, numeroInicial, numeroFinal);
+
+                for (int i = 1; i <= sequencias; i++)
+                {
+                    sequencialService.AdicionaSequencia(parametro, list);
+
+                    Console.WriteLine(sequencialService.RetornaSequencia(list));
+
+                    list = new Sequencia(new List<int>());
+                }
+                Console.WriteLine("Deseja encerrar o sistema? s/n");
+                encerra = Console.ReadLine();
+            }
         }
 
         public static void ConfigureServices(IServiceCollection services)

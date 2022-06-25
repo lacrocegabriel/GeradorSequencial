@@ -7,7 +7,7 @@ namespace GeradorSequencial.Gerador.Repository
     {
         public string BuscaSequencia(Sequencia sequencia)
         {
-            var resultado = string.Join(" - ", sequencia.SequenciaNumerica);
+            var resultado = string.Join(" - ", sequencia.SequenciaNumerica.OrderBy(i => i));
             return resultado.ToString();
         }
 
